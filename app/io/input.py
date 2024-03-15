@@ -12,5 +12,8 @@ def read_from_file(filepath):
 
 def read_from_file_pandas(filepath):
     """reads content from a file using the pandas library"""
-    df = pd.read_csv(filepath)
+    try:
+        df = pd.read_csv(filepath)
+    except pd.errors.EmptyDataError:
+        df = pd.DataFrame()
     return df
